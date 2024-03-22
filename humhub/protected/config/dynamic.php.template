@@ -1,0 +1,53 @@
+<?php return array (
+  'components' => 
+  array (
+    'db' => 
+    array (
+      'class' => 'yii\\db\\Connection',
+      'dsn' => 'mysql:host=localhost;dbname=$DB_NAME',
+      'username' => '$DB_USER',
+      'password' => '$DB_PASSWORD',
+    ),
+    'user' => 
+    array (
+    ),
+    'mailer' => 
+    array (
+      'transport' => 
+      array (
+        'host' => '$EMAIL_SMTP_URL',
+        'port' => $EMAIL_PORT,
+        'username' => '$EMAIL_USERNAME',
+        'password' => '$EMAIL_PASSWORD',
+        'scheme' => 'smtp',
+      ),
+    ),
+    'cache' => 
+    array (
+      'class' => 'yii\\caching\\FileCache',
+      'keyPrefix' => 'humhub',
+    ),
+    'formatter' => 
+    array (
+      'defaultTimeZone' => 'Europe/Berlin',
+    ),
+  ),
+  'params' => 
+  array (
+    'installer' => 
+    array (
+      'db' => 
+      array (
+        'installer_hostname' => 'localhost',
+        'installer_database' => '$DB_NAME',
+      ),
+    ),
+    'config_created_at' => $NOW,
+    'horImageScrollOnMobile' => 1,
+    'databaseInstalled' => true,
+    'installed' => true,
+  ),
+  'name' => 'Gradido Community',
+  'language' => 'de',
+  'timeZone' => 'Europe/Berlin',
+); ?>
