@@ -112,7 +112,7 @@ EOFMYSQL
 cd /tmp
 wget https://download.humhub.com/downloads/install/humhub-1.15.3.tar.gz
 tar xvfz humhub-1.15.3.tar.gz
-mv /tmp/humhub-1.15.3 cd $PROJECT_ROOT/humhub
+mv /tmp/humhub-1.15.3 $PROJECT_ROOT/humhub
 
 NOW=$(date +%s)
 envsubst "$(env | sed -e 's/=.*//' -e 's/^/\$/g')" < $SCRIPT_PATH/humhub/protected/config/dynamic.php.template > $SCRIPT_PATH/humhub/protected/config/dynamic.php
@@ -123,7 +123,7 @@ cd $PROJECT_ROOT/humhub/protected/modules
 git clone https://github.com/gradido/gradido-humhub-module.git
 git clone https://github.com/gradido/block-profile-changes.git
 git clone https://github.com/gradido/customize-tags.git
-git clone https://github.com/cuzy-app/humhub-modules-clean-theme
+git clone https://github.com/cuzy-app/humhub-modules-clean-theme clean-theme
 # themes: clean-base  clean-bordered  clean-contrasted
 # gradido-humhub-module/themes/gradido-humhub/views/user/widgets/peopleCard.php
 # clean-theme/themes/clean-base/views/user/widgets/peopleCard.php
@@ -137,6 +137,11 @@ themes=("clean-base" "clean-bordered" "clean-contrasted")
 for theme in "${themes[@]}"
 do
     destination_dir="clean-theme/themes/$theme/views/user/widgets/"
+
+    # Create the widgets directory if it doesn't exist
+    mkdir -p "$destination_dir"
+
+    # Copy the file to the destination directory
     cp "$source_file" "$destination_dir"
     echo "Copied $source_file to $destination_dir"
 done

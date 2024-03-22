@@ -12,9 +12,6 @@ server {
 }
 
 server {
-        listen 80;
-        listen [::]:80;
-        
         root /var/www/humhub;
         server_name $COMMUNITY_HOST;
 
